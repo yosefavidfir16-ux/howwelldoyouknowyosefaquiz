@@ -2,6 +2,9 @@
 
 <html>
 <head>
+<meta name="viewport"
+content="width=device-width, 
+initial-scale=1.0">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <meta charset="UTF-8">
 <title>How Well Do You Know About Yosefa?</title>
@@ -34,13 +37,11 @@ to{opacity:1; transform:translateY(0)}
 }
 
 .container{
-width:900px;
+width:100px;
+max-width:900px;
 margin:auto;
-margin-top:50px;
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+padding:315px;
+box-siding:border-box;
 }
 
 button{
@@ -283,6 +284,30 @@ justify-content:center;
 width:28px;
 height:28px;
 border-radius:50%;
+}
+
+ @media(max-width:600px){
+
+  .options{
+    grid-template-columns:1fr;
+  }
+
+  .option img{
+    height:180px;
+  }
+
+  h1{
+    font-size:22px;
+  }
+
+  h2{
+    font-size:18px;
+  }
+
+  button{
+    width:100%;
+  }
+
 }
 </style>
 
