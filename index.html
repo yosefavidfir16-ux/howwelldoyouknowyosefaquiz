@@ -878,6 +878,8 @@ localStorage.setItem("leaderboard", JSON.stringify(data));
 setTimeout(()=>{
   showLeaderboard();
 },500);
+
+localStorage.setItem("alreadyPlayed", "true");
 }
 
 function showLeaderboard(){
@@ -917,6 +919,10 @@ avatar = img.src;
 
 }
 </script>
+if(localStorage.getItem("alreadyPlayed")){
+  alert("😏 You already played this quiz!");
+  document.body.innerHTML = "<h1>Game already played 😎</h1>";
+}
 
 </body>
 </html>
