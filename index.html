@@ -868,8 +868,49 @@ origin:{y:0.6}
 document.getElementById("bgMusic").pause();
 document.getElementById("resultSound").play();
 
+let data = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+data.push({
+  name: username,
+  score: score,
+  avatar: avatar
+});
+
+data.sort((a,b)=>b.score-a.score);
+
+localStorage.setItem("leaderboard", JSON.stringify(data));
+
+setTimeout(()=>{
+  showLeaderboard();
+},500);
 }
 
+function showLeaderboard(){
+
+let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+leaderboard.sort((a,b)=>b.score-a.score);
+
+let html="";
+
+leaderboard.slice(0,10).forEach((p,i)=>{
+
+html+=`
+<tr>
+<td>#${i+1}</td>
+<td class="player">
+<img src="${p.avatar}">
+${p.name}
+</td>
+<td>${p.score}</td>
+</tr>
+`;
+
+});
+
+document.getElementById("leaderboard-body").innerHTML = html;
+
+}
 function selectAvatar(img){
 
 document.querySelectorAll(".avatars img")
