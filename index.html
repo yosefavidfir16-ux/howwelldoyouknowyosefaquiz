@@ -889,16 +889,18 @@ showLeaderboard();
 
 async function showLeaderboard(){
 
-let res = await fetch("https://script.google.com/macros/s/AKfycbyuVaeae7JOcWdjoI-7DvLaiznXrEEnZm0xjlYGLGsf27BEsObP-Z6w0qNuBeS0hvg54w/exec");
+let res = await 
+fetch("https://script.google.com/macros/s/AKfycbyuVaeae7JOcWdjoI-7DvLaiznXrEEnZm0xjlYGLGsf27BEsObP-Z6w0qNuBeS0hvg54w/exec");
 let leaderboard = await res.json();
 
-// 🔥 FILTER (INI PENTING)
 let displayData;
 
-if(username === "Yosefa"){
-  displayData = leaderboard; // kamu lihat semua
+if(username.trim().toLowerCase() === "yosefa"){
+  displayData = leaderboard; 
 }else{
-  displayData = leaderboard.filter(p => p.name === username); // orang lain cuma lihat dirinya
+  displayData = leaderboard.filter(p => 
+  p.name.trim().toLowerCase() === username.trim().toLowerCase()
+);
 }
 
 displayData.sort((a,b)=>b.score-a.score);
